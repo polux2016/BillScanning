@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+using BillScanningController.Abstract;
+using BillScanningController.Enteties;
 
 namespace BillScanning.Controllers
 {
@@ -10,6 +10,18 @@ namespace BillScanning.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private IValueRepository repository;
+
+        public ValuesController(IValueRepository repo)
+        {
+            repository = repo;
+        }
+
+        public List<Value> ShowSimilarValues(bool isPositive)
+        {
+            return repository.Values.Where(v => v.IsPositive == isPositive).ToList();
+        }
+
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
