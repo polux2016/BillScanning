@@ -3,8 +3,8 @@ mono: none
 dotnet: 2.1.504
 solution: BillScanning.sln
 install:
-  - nuget restore BillScanning.sln
-  - nuget install xunit.runners -Version 1.9.2 -OutputDirectory testrunner
+  - dotnet restore BillScanning.sln
+  - dotnet install xunit.runners -Version 1.9.2 -OutputDirectory testrunner
 script:
   - dotnet restore
   - msbuild /p:Configuration=Release BillScanning.sln
