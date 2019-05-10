@@ -5,5 +5,5 @@ solution: BillScanning.sln
 install:
   - dotnet restore BillScanning.sln
 script:
-  - msbuild /p:Configuration=Release BillScanning.sln
+  - dotnet build
   - dotnet test
