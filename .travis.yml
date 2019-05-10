@@ -4,8 +4,6 @@ dotnet: 2.1.504
 solution: BillScanning.sln
 install:
   - dotnet restore BillScanning.sln
-  -dotnet add package xunit.runners --version 1.9.2
 script:
-  - dotnet restore
   - msbuild /p:Configuration=Release BillScanning.sln
-  - mono ./testrunner/xunit.runners.1.9.2/tools/xunit.console.clr4.exe ./BillScanningXTests/bin/Release/BillScanningXTests.dll
+  - dotnet test
